@@ -9,18 +9,34 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
 
-    form {
-      background-color: white;
+    .container {
+      width: 80%;
+      max-width: 1200px;
       padding: 20px;
+      background-color: white;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      margin: 20px;
+      margin: 20px 0;
+    }
+
+    nav {
+      width: 100%;
+      background-color: #4CAF50;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 18px;
     }
 
     h1 {
@@ -28,6 +44,10 @@
       margin-bottom: 20px;
       color: #333;
       text-align: center;
+    }
+
+    form {
+      margin-bottom: 20px;
     }
 
     input[type="text"], input[type="password"] {
@@ -53,24 +73,124 @@
       background-color: #45a049;
     }
 
-    .CreateUser, .LoginUser {
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 5px;
+    }
+
+    .leaderboard, .course-progress, .search-students {
+      margin-bottom: 20px;
+    }
+
+    .course-item, .student-item {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .course-title, .student-name {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .progress, .status {
+      color: #777;
+    }
+
+    .progress-bar {
       width: 100%;
+      background-color: #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    .progress-bar-fill {
+      display: block;
+      height: 100%;
+      background-color: #4CAF50;
+      width: 50%; /* Example percentage */
+      transition: width 0.5s ease-in-out;
+    }
+
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
     }
   </style>
 </head>
 <body>
-  <form class="CreateUser">
-    <h1>Create a new user</h1>
-    <input type="text" class="username" placeholder="username">
-    <input type="password" class="password" placeholder="password">
-    <input type="submit" value="Create user">
-  </form>
-  <form class="LoginUser">
-    <h1>Login</h1>
-    <input type="text" class="username" placeholder="Username">
-    <input type="password" class="password" placeholder="Password">
-    <input type="submit" value="Login">
-  </form>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">Students</a>
+    <a href="#">Contact</a>
+  </nav>
+  <div class="container">
+    <h1>User Management</h1>
+
+    <form class="CreateUser">
+      <h1>Create a new user</h1>
+      <input type="text" class="username" placeholder="Username">
+      <input type="password" class="password" placeholder="Password">
+      <input type="submit" value="Create user">
+    </form>
+
+    <form class="LoginUser">
+      <h1>Login</h1>
+      <input type="text" class="username" placeholder="Username">
+      <input type="password" class="password" placeholder="Password">
+      <input type="submit" value="Login">
+    </form>
+
+    <div class="course-progress">
+      <div class="section-title">Available Courses</div>
+      <div class="course-item">
+        <div>
+          <span class="course-title">Preparing for Work</span>
+          <div class="progress-bar">
+            <span class="progress-bar-fill" style="width: 50%;"></span>
+          </div>
+        </div>
+        <span class="progress">50% Completed</span>
+      </div>
+      <!-- Add more courses as needed -->
+    </div>
+
+    <div class="leaderboard">
+      <div class="section-title">Course Leaderboard</div>
+      <div class="student-item">
+        <span class="student-name">John Doe</span>
+        <span class="status">Score: 75%</span>
+      </div>
+      <!-- Add more leaderboard entries as needed -->
+    </div>
+
+    <div class="search-students">
+      <div class="section-title">Search Students</div>
+      <input type="text" placeholder="Enter student name" style="width: calc(100% - 20px); padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+      <div class="student-item">
+        <span class="student-name">Jane Doe</span>
+        <span class="status">Last Accessed: 25 January 2024</span>
+      </div>
+      <!-- Add more student entries as needed -->
+    </div>
+  </div>
+  <footer>
+    &copy; 2024 Your Organization. All Rights Reserved.
+  </footer>
   <script src="/app.js"></script>
 </body>
 </html>
