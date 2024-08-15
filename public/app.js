@@ -69,3 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutForm.style.display = 'none';
   });
 });
+
+document.querySelector('.LoginUser').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting
+
+  const role = document.querySelector('.LoginUser select').value;
+  if (role === 'lecturer') {
+    alert('Welcome, Lecturer!');
+  } else {
+    alert('Welcome, Student!');
+  }
+});

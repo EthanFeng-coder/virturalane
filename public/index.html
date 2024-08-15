@@ -3,26 +3,26 @@
 <head>
   <title>Node.js and MySQL Login</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
     .container {
-      width: 80%;
-      max-width: 1200px;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin: 20px 0;
-    }
+  width: 80%;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  flex-grow: 1;
+}
 
     nav {
       width: 100%;
@@ -50,7 +50,7 @@
       margin-bottom: 20px;
     }
 
-    input[type="text"], input[type="password"] {
+    input[type="text"], input[type="password"], select {
       width: calc(100% - 20px);
       padding: 10px;
       margin: 10px 0;
@@ -119,16 +119,16 @@
       width: 50%; /* Example percentage */
       transition: width 0.5s ease-in-out;
     }
-
     footer {
-      background-color: #4CAF50;
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-    }
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
   </style>
 </head>
 <body>
@@ -145,6 +145,10 @@
       <h1>Create a new user</h1>
       <input type="text" class="username" placeholder="Username">
       <input type="password" class="password" placeholder="Password">
+      <select>
+        <option value="lecturer">Lecturer</option>
+        <option value="student">Student</option>
+      </select>
       <input type="submit" value="Create user">
     </form>
 
@@ -152,6 +156,10 @@
       <h1>Login</h1>
       <input type="text" class="username" placeholder="Username">
       <input type="password" class="password" placeholder="Password">
+      <select>
+        <option value="lecturer">Lecturer</option>
+        <option value="student">Student</option>
+      </select>
       <input type="submit" value="Login">
     </form>
 
@@ -192,5 +200,20 @@
     &copy; 2024 Your Organization. All Rights Reserved.
   </footer>
   <script src="/app.js"></script>
+  <script>
+    document.querySelector('.LoginUser').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting
+
+      const role = document.querySelector('.LoginUser select').value;
+
+      if (role === 'lecturer') {
+        alert('Welcome, Lecturer!');
+        document.querySelector('.search-students').style.display = 'block'; // Hide search students section
+      } else {
+        alert('Welcome, Student!');
+        document.querySelector('.search-students').style.display = 'none'; // Show search students section
+      }
+    });
+  </script>
 </body>
 </html>
